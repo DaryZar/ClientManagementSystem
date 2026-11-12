@@ -1,0 +1,150 @@
+Fri Oct 02 09:55:27 MSK 2026 : Type parsing error (Unparseable date: "ошибка_даты") in line: 3;BrokenData;corrupted:pdf;ошибка_даты;999.00
+Fri Oct 02 09:55:27 MSK 2026 : Invalid field count in line: 5;Yla;notes;txt;2026-08-12;1233
+Fri Oct 02 10:04:18 MSK 2026 : Type parsing error (Unparseable date: "ошибка_даты") in line: 3;BrokenData;corrupted:pdf;ошибка_даты;999.00
+Fri Oct 02 10:04:18 MSK 2026 : Invalid field count in line: 5;Yla;notes;txt;2026-08-12;1233
+Thu Oct 08 11:59:00 MSK 2026 : Type parsing error (For input string: "15000,00") in line: 1;AlphaCorp;report:pdf|table:xls;2026-05-10;15000,00
+Thu Oct 08 11:59:00 MSK 2026 : Type parsing error (For input string: "4500,00") in line: 2;BetaSoft;notes:txt;2026-08-24;4500,00
+Thu Oct 08 11:59:00 MSK 2026 : Type parsing error (For input string: "8900,50") in line: 4;GammaTech;-;2026-01-15;8900,50
+Thu Oct 08 12:17:44 MSK 2026 : Type parsing error (For input string: "15000,00") in line: 1;AlphaCorp;report:pdf|table:xls;2026-05-10;15000,00
+Thu Oct 08 12:17:44 MSK 2026 : Type parsing error (For input string: "4500,00") in line: 2;BetaSoft;notes:txt;2026-08-24;4500,00
+Thu Oct 08 12:17:44 MSK 2026 : Type parsing error (For input string: "8900,50") in line: 3;GammaTech;-;2026-01-15;8900,50
+Thu Oct 08 12:17:44 MSK 2026 : Type parsing error (For input string: "23450,75") in line: 4;DeltaProduction;invoice:doc|schema:json|archive:zip;2026-09-01;23450,75
+Thu Oct 08 12:17:44 MSK 2026 : Type parsing error (For input string: "6200,00") in line: 5;OmegaResearch;data:txt|chart:pdf;2026-03-20;6200,00
+Thu Oct 08 12:18:36 MSK 2026 : Type parsing error (For input string: "15000,00") in line: 1;AlphaCorp;report:pdf|table:xls;2026-05-10;15000,00
+Thu Oct 08 12:18:36 MSK 2026 : Type parsing error (For input string: "4500,00") in line: 2;BetaSoft;notes:txt;2026-08-24;4500,00
+Thu Oct 08 12:18:36 MSK 2026 : Type parsing error (For input string: "8900,50") in line: 3;GammaTech;-;2026-01-15;8900,50
+Thu Oct 08 12:18:36 MSK 2026 : Type parsing error (For input string: "23450,75") in line: 4;DeltaProduction;invoice:doc|schema:json|archive:zip;2026-09-01;23450,75
+Thu Oct 08 12:18:36 MSK 2026 : Type parsing error (For input string: "6200,00") in line: 5;OmegaResearch;data:txt|chart:pdf;2026-03-20;6200,00
+Thu Oct 08 12:24:53 MSK 2026 : Invalid field count in line: 6;InvalidFields;report:pdf;2026-05-10
+Thu Oct 08 12:24:53 MSK 2026 : Logical value error in line: -7;NegativeID;notes:txt;2026-08-24;4500,00
+Thu Oct 08 12:24:53 MSK 2026 : Logical value error in line: 8;EmptyName;-;2026-01-15;-300,00
+Thu Oct 08 12:24:53 MSK 2026 : Type parsing error (For input string: "сто_рублей") in line: 10;BadBudget;data:txt;2026-03-20;сто_рублей
+Thu Oct 08 12:24:53 MSK 2026 : Invalid file token format 'table' in line: 11;BrokenFiles;report:pdf|table;2026-05-10;12000,00
+Thu Oct 08 12:29:41 MSK 2026 : Invalid field count in line: 6;InvalidFields;report:pdf;2026-05-10
+Thu Oct 08 12:29:41 MSK 2026 : Logical value error in line: -7;NegativeID;notes:txt;2026-08-24;4500,00
+Thu Oct 08 12:29:41 MSK 2026 : Logical value error in line: 8;EmptyName;-;2026-01-15;-300,00
+Thu Oct 08 12:29:41 MSK 2026 : Type parsing error (Unparseable date: "2026-13-45") in line: 9;WrongDate;invoice:doc;2026-13-45;23450,75
+Thu Oct 08 12:29:41 MSK 2026 : Type parsing error (For input string: "сто_рублей") in line: 10;BadBudget;data:txt;2026-03-20;сто_рублей
+Thu Oct 08 12:29:41 MSK 2026 : Invalid file token format 'table' in line: 11;BrokenFiles;report:pdf|table;2026-05-10;12000,00
+Thu Oct 08 13:46:32 MSK 2026 : Invalid field count in line: 6;InvalidFields;report:pdf;2026-05-10
+Thu Oct 08 13:46:32 MSK 2026 : Logical value error in line: -7;NegativeID;notes:txt;2026-08-24;4500,00
+Thu Oct 08 13:46:32 MSK 2026 : Logical value error in line: 8;EmptyName;-;2026-01-15;-300,00
+Thu Oct 08 13:46:32 MSK 2026 : Type parsing error (Unparseable date: "2026-13-45") in line: 9;WrongDate;invoice:doc;2026-13-45;23450,75
+Thu Oct 08 13:46:32 MSK 2026 : Type parsing error (For input string: "сто_рублей") in line: 10;BadBudget;data:txt;2026-03-20;сто_рублей
+Thu Oct 08 13:46:32 MSK 2026 : Invalid file token format 'table' in line: 11;BrokenFiles;report:pdf|table;2026-05-10;12000,00
+Thu Oct 08 13:47:48 MSK 2026 : Invalid field count in line: 6;InvalidFields;report:pdf;2026-05-10
+Thu Oct 08 13:47:48 MSK 2026 : Logical value error in line: -7;NegativeID;notes:txt;2026-08-24;4500,00
+Thu Oct 08 13:47:48 MSK 2026 : Logical value error in line: 8;EmptyName;-;2026-01-15;-300,00
+Thu Oct 08 13:47:48 MSK 2026 : Type parsing error (Unparseable date: "2026-13-45") in line: 9;WrongDate;invoice:doc;2026-13-45;23450,75
+Thu Oct 08 13:47:48 MSK 2026 : Type parsing error (For input string: "сто_рублей") in line: 10;BadBudget;data:txt;2026-03-20;сто_рублей
+Thu Oct 08 13:47:48 MSK 2026 : Invalid file token format 'table' in line: 11;BrokenFiles;report:pdf|table;2026-05-10;12000,00
+Thu Oct 08 13:47:48 MSK 2026 : Type parsing error (For input string: "1c5000.00") in line: 12;Alpha Corp2;report:pdf|table:xls;2026-05-10;1c5000,00
+Thu Oct 08 13:48:56 MSK 2026 : Invalid field count in line: 6;InvalidFields;report:pdf;2026-05-10
+Thu Oct 08 13:48:56 MSK 2026 : Logical value error in line: -7;NegativeID;notes:txt;2026-08-24;4500,00
+Thu Oct 08 13:48:56 MSK 2026 : Logical value error in line: 8;EmptyName;-;2026-01-15;-300,00
+Thu Oct 08 13:48:56 MSK 2026 : Type parsing error (Unparseable date: "2026-13-45") in line: 9;WrongDate;invoice:doc;2026-13-45;23450,75
+Thu Oct 08 13:48:56 MSK 2026 : Type parsing error (For input string: "сто_рублей") in line: 10;BadBudget;data:txt;2026-03-20;сто_рублей
+Thu Oct 08 13:48:56 MSK 2026 : Invalid file token format 'table' in line: 11;BrokenFiles;report:pdf|table;2026-05-10;12000,00
+Thu Oct 08 13:48:56 MSK 2026 : Invalid field count in line: 12;Alpha Corp2;report:pdf|table:xls;2026-05-10;155000,00;345
+Thu Oct 08 13:55:53 MSK 2026 : Invalid field count in line: 6;InvalidFields;report:pdf;2026-05-10
+2026-11-05 10:28:37 : XSD schema not found: schema.xsd
+2026-11-05 10:28:38 : XSD schema not found: schema.xsd
+2026-11-05 10:28:40 : XSD schema not found: schema.xsd
+2026-11-05 11:43:50 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 11:43:50 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 11:43:52 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 11:48:38 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 11:49:42 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 11:56:06 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 11:57:14 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 12:00:46 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 12:04:29 : XML validation against schema 'schema.xsd' failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-05 12:16:26 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 12:45:06 : Invalid field count in line: broken_line_here
+2026-11-12 12:45:07 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 12:45:07 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 12:45:07 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 12:45:07 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 12:45:07 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 12:45:07 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 12:45:07 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:16:40 : Invalid field count in line: broken_line_here
+2026-11-12 13:16:40 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:16:40 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:16:40 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:16:40 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:16:40 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:16:40 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:16:40 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:19:34 : Invalid field count in line: broken_line_here
+2026-11-12 13:19:34 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:19:34 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:19:34 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:19:34 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:19:34 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:19:34 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:19:34 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:21:12 : Invalid field count in line: broken_line_here
+2026-11-12 13:21:12 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:21:12 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:21:12 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:21:12 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:21:12 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:21:12 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:21:12 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:22:25 : Invalid field count in line: broken_line_here
+2026-11-12 13:22:25 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:22:25 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:22:25 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:22:25 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:22:25 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:22:25 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:22:26 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:22:34 : Invalid field count in line: broken_line_here
+2026-11-12 13:22:34 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:22:34 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:22:34 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:22:34 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:22:34 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:22:34 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:22:34 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:24:02 : Invalid field count in line: broken_line_here
+2026-11-12 13:24:02 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:24:02 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:24:02 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:24:02 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:24:02 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:24:02 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:24:02 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:24:43 : Invalid field count in line: broken_line_here
+2026-11-12 13:24:43 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:24:43 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:24:43 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:24:43 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:24:43 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:24:43 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:24:43 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:26:16 : Invalid field count in line: broken_line_here
+2026-11-12 13:26:16 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:26:16 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:26:16 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:26:16 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:26:16 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:26:16 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:26:16 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:30:46 : Invalid field count in line: broken_line_here
+2026-11-12 13:30:46 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:30:46 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:30:46 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:30:46 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:30:46 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:30:46 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:30:46 : XML validation failed: s4s-elt-schema-ns: The namespace of element 'schema' must be from the schema namespace, 'http://www.w3.org/2001/XMLSchema'.
+2026-11-12 13:31:54 : Invalid field count in line: broken_line_here
+2026-11-12 13:31:55 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-12 13:31:55 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-12 13:31:55 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-12 13:31:55 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-12 13:31:55 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-12 13:31:55 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-12 13:31:55 : XML validation failed: cvc-complex-type.2.4.a: Invalid content was found starting with element 'wrongTag'. One of '{client}' is expected.

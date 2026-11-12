@@ -1,0 +1,28 @@
+[ {
+  "id" : 1,
+  "name" : "Альфа Консалт",
+  "files" : [ {
+    "fileName" : "file1",
+    "fileType" : "pdf"
+  }, {
+    "fileName" : "file2",
+    "fileType" : "txt"
+  } ],
+  "contractDate" : "2026-01-15",
+  "searchBudget" : 150000.0
+}, {
+  "id" : 2,
+  "name" : "Бета Трейд",
+  "files" : [ ],
+  "contractDate" : "2026-03-22",
+  "searchBudget" : 75500.5
+}, {
+  "id" : 3,
+  "name" : "Гамма Технолоджи",
+  "files" : [ {
+    "fileName" : "report",
+    "fileType" : "xml"
+  } ],
+  "contractDate" : "2026-11-05",
+  "searchBudget" : 230000.0
+} ]

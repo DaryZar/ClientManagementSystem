@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<clients>
+    <client id="1">
+        <name>Альфа Консалт4</name>
+        <contractDate>2026-01-15</contractDate>
+        <searchBudget>150000.0</searchBudget>
+        <files>
+            <file type="pdf">file1</file>
+            <file type="txt">file2</file>
+        </files>
+    </client>
+    <client id="2">
+        <name>Бета Трейд</name>
+        <contractDate>2026-03-22</contractDate>
+        <searchBudget>75500.5</searchBudget>
+        <files>
+        </files>
+    </client>
+    <client id="3">
+        <name>Гамма Технолоджи</name>
+        <contractDate>2026-11-05</contractDate>
+        <searchBudget>230000.0</searchBudget>
+        <files>
+            <file type="xml">report</file>
+        </files>
+    </client>
+</clients>

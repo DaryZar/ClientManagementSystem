@@ -1,0 +1,9 @@
+<!ELEMENT clients (client*)>
+<!ELEMENT client (name, contractDate, searchBudget, files)>
+<!ATTLIST client id CDATA #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT contractDate (#PCDATA)>
+<!ELEMENT searchBudget (#PCDATA)>
+<!ELEMENT files (file*)>
+<!ELEMENT file (#PCDATA)>
+<!ATTLIST file type CDATA #REQUIRED>
