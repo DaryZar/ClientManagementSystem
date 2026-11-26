@@ -21,7 +21,7 @@ public class DatabaseConnection
         return instance;
     }
 
-    /** Используется только в тестах, чтобы каждый тест начинался с чистого состояния. */
+
     static synchronized void resetForTests() 
     {
         instance = null;

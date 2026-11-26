@@ -1,8 +1,10 @@
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -59,6 +61,7 @@ public class MainMenu {
             System.out.println("27. Archiving: Unpack data.xml from JAR");
             System.out.println("28. Sort by contract date (Collections/Comparator)");
             System.out.println("29. Sort by ID (Collections/Comparator)");
+            System.out.println("30. Build file package from files (Builder pattern)");
             System.out.println("0. Exit");
             System.out.print("Select action: ");
 
@@ -184,6 +187,7 @@ public class MainMenu {
                         System.out.println("List sorted by ID:");
                         DataOperations.printWithIterator(sortedList);
                     }
+                    case 30 -> executeBuildFilePackage();
 
                     case 0 -> {
                         System.out.println("Exiting program.");
@@ -211,14 +215,8 @@ public class MainMenu {
         LocalDate date = readValidDate("Enter contract date (YYYY-MM-DD): ");
         double budget = readValidDouble("Enter search budget: ");
 
-        ClientBuilder builder = new ConcreteClientBuilder();
-        Client client = builder
-                .buildId(id)
-                .buildName(name)
-                .buildFiles(files)
-                .buildContractDate(date)
-                .buildSearchBudget(budget)
-                .getResult();
+        List<ClientFile> builtFiles = buildFilePackage(files);
+        Client client = new Client(id, name, builtFiles, date, budget);
         manager.addClient(client);
         saveChanges();
         System.out.println("Client added successfully.");
@@ -241,14 +239,8 @@ public class MainMenu {
         LocalDate date = readValidDate("Enter new contract date (YYYY-MM-DD): ");
         double budget = readValidDouble("Enter new budget: ");
 
-        ClientBuilder builder = new ConcreteClientBuilder();
-        Client updatedClient = builder
-                .buildId(id)
-                .buildName(name)
-                .buildFiles(files)
-                .buildContractDate(date)
-                .buildSearchBudget(budget)
-                .getResult();
+        List<ClientFile> builtFiles = buildFilePackage(files);
+        Client updatedClient = new Client(id, name, builtFiles, date, budget);
         manager.updateClient(updatedClient);
         saveChanges();
         System.out.println("Information updated.");
@@ -275,10 +267,53 @@ public class MainMenu {
         }
     }
 
+    /** Сборка пакета файлов: Director задаёт порядок, Builder выполняет шаги. */
+    private List<ClientFile> buildFilePackage(List<ClientFile> files) {
+        FilePackageBuilder builder = new ConcreteFilePackageBuilder();
+        FilePackageDirector director = new FilePackageDirector(builder);
+        director.construct(files);
+        return builder.getResult().getFiles();
+    }
+
+    /** Пункт 30: принять реальные файлы и собрать из них пакет через Builder. */
+    private void executeBuildFilePackage() {
+        List<File> files = readFilesFromPaths();
+        FilePackageBuilder builder = new ConcreteFilePackageBuilder();
+        FilePackageDirector director = new FilePackageDirector(builder);
+        director.construct(files.toArray(new File[0]));
+
+        FilePackage filePackage = builder.getResult();
+        System.out.println("File package built with " + filePackage.size() + " file(s):");
+        Iterator<ClientFile> iterator = filePackage.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(" - " + iterator.next());
+        }
+    }
+
+    private List<File> readFilesFromPaths() {
+        List<File> files = new ArrayList<>();
+        while (true) {
+            System.out.print("Enter file path (empty line to finish): ");
+            String path = scanner.nextLine().trim();
+            if (path.isEmpty()) {
+                break;
+            }
+            File file = new File(path);
+            if (!file.isFile()) {
+                String message = "File not found: " + path;
+                System.out.println(message);
+                Validator.logError(message);
+                continue;
+            }
+            files.add(file);
+        }
+        return files;
+    }
+
     private List<ClientFile> readClientFiles() {
         List<ClientFile> files = new ArrayList<>();
         while (true) {
-            System.out.print("Add file to client? (y/n): ");
+            System.out.print("Add file to package? (y/n): ");
             String answer = scanner.nextLine().trim().toLowerCase();
             if (!answer.equals("y")) {
                 break;

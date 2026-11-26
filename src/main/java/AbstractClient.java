@@ -1,10 +1,7 @@
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Абстрактный контракт сущности «клиент».
- * Конкретная реализация хранит поля и описана в классе Client.
- */
+
 public abstract class AbstractClient 
 {
     public abstract int getId();

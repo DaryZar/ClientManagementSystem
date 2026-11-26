@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.io.TempDir;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -451,30 +450,65 @@ class ProjectUnitTests
     }
 
     @Test
-    void testBuilder_BuildsFluentClientAndResetWorks() {
-        ClientBuilder builder = new ConcreteClientBuilder();
-        assertSame(builder, builder.buildId(42));
+    void testFilePackageBuilder_BuildsFilesIntoListAndResetWorks() {
+        FilePackageBuilder builder = new ConcreteFilePackageBuilder();
+        assertNotNull(builder.getResult());
 
-        List<ClientFile> files = List.of(new ClientFile("contract", "pdf"));
-        Client built = builder
-                .buildName("Builder Corp")
-                .buildFiles(files)
-                .buildContractDate(LocalDate.of(2026, 2, 3))
-                .buildSearchBudget(9876.5)
-                .getResult();
+        assertSame(builder, builder.addFile(new ClientFile("a", "txt")));
+        builder.addFiles(Arrays.asList(
+                new ClientFile("b", "pdf"), null, new ClientFile("c", "json")));
 
-        assertEquals(42, built.getId());
-        assertEquals("Builder Corp", built.getName());
-        assertEquals(1, built.getFiles().size());
-        assertEquals("contract.pdf", built.getFiles().get(0).toString());
-        assertEquals(LocalDate.of(2026, 2, 3), built.getContractDate());
-        assertEquals(9876.5, built.getSearchBudget());
+        FilePackage product = builder.getResult();
+        assertEquals(3, product.size());
+        assertEquals("a.txt", product.getFiles().get(0).toString());
+        assertEquals("c.json", product.getFiles().get(2).toString());
 
         builder.reset();
-        Client empty = builder.getResult();
-        assertEquals(0, empty.getId());
-        assertNull(empty.getName());
-        assertTrue(empty.getFiles().isEmpty());
+        assertTrue(builder.getResult().getFiles().isEmpty());
+        assertEquals(3, product.getFiles().size());
+    }
+
+    @Test
+    void testFilePackageDirector_ControlsBuildOrderAndDoesNotMixPackages() {
+        FilePackageBuilder builder = new ConcreteFilePackageBuilder();
+        FilePackageDirector director = new FilePackageDirector(builder);
+
+        director.construct(List.of(
+                new ClientFile("one", "doc"), new ClientFile("two", "xls")));
+        FilePackage firstPackage = builder.getResult();
+        assertEquals(2, firstPackage.size());
+
+        director.construct(List.of(new ClientFile("three", "ppt")));
+        assertEquals(1, builder.getResult().size());
+        assertEquals(2, firstPackage.size());
+    }
+
+    @Test
+    void testFilePackageBuilder_AcceptsRealFiles() throws IOException {
+        File realFile = tempDir.resolve("report.PDF").toFile();
+        assertTrue(realFile.createNewFile());
+
+        FilePackageBuilder builder = new ConcreteFilePackageBuilder();
+        builder.addFile(realFile);
+
+        ClientFile added = builder.getResult().getFiles().get(0);
+        assertEquals("report", added.getFileName());
+        assertEquals("pdf", added.getFileType());
+    }
+
+    @Test
+    void testFilePackage_IteratorAndDefensiveCopy() {
+        FilePackage filePackage = new FilePackage();
+        filePackage.addFiles(List.of(new ClientFile("x", "txt")));
+
+        List<ClientFile> copy = filePackage.getFiles();
+        copy.clear();
+        assertEquals(1, filePackage.size());
+
+        Iterator<ClientFile> iterator = filePackage.iterator();
+        assertTrue(iterator.hasNext());
+        assertEquals("x.txt", iterator.next().toString());
+        assertFalse(iterator.hasNext());
     }
 
     @Test
@@ -496,7 +530,7 @@ class ProjectUnitTests
     void testMenu_CreateClientUpdatesTxtFileImmediately() throws IOException {
         manager.clearAll();
         String dataFile = tempDir.resolve("menu_data.txt").toString();
-        String input = "2\n7\nMenu Co\nn\n2026-07-01\n777.50\n0\n";
+        String input = "2\n7\nMenu Co\ny\ndoc1\npdf\nn\n2026-07-01\n777.50\n0\n";
 
         InputStream originalIn = System.in;
         PrintStream originalOut = System.out;
@@ -514,6 +548,7 @@ class ProjectUnitTests
         String saved = Files.readString(Path.of(dataFile));
         assertTrue(saved.contains("Menu Co"));
         assertTrue(saved.contains("777.50"));
+        assertTrue(saved.contains("doc1:pdf"));
     }
 
     @Test
@@ -547,6 +582,34 @@ class ProjectUnitTests
         String xmlPath = tempDir.resolve("schema_check.xml").toString();
         XmlAdvancedHandler.saveWithDom(xmlPath, manager);
         assertTrue(Validator.validateXml(xmlPath, "schema.xsd"));
+    }
+
+    @Test
+    void testMenu_BuildFilePackageFromRealFilePaths() throws IOException {
+        File realFile = tempDir.resolve("menu_report.txt").toFile();
+        assertTrue(realFile.createNewFile());
+
+        manager.clearAll();
+        String dataFile = tempDir.resolve("package_menu_data.txt").toString();
+        String input = "30\n" + realFile.getAbsolutePath() + "\n\n0\n";
+
+        InputStream originalIn = System.in;
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+            System.setIn(new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8)));
+            System.setOut(new PrintStream(output, true, StandardCharsets.UTF_8));
+            MainMenu menu = new MainMenu(manager, dataFile);
+            menu.run();
+        } finally {
+            System.setIn(originalIn);
+            System.setOut(originalOut);
+        }
+
+        String console = output.toString(StandardCharsets.UTF_8);
+        assertTrue(console.contains("File package built with 1 file(s)"));
+        assertTrue(console.contains("menu_report.txt"));
+        assertTrue(manager.getClientList().isEmpty());
     }
 }
 
