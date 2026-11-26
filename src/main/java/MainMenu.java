@@ -211,7 +211,14 @@ public class MainMenu {
         LocalDate date = readValidDate("Enter contract date (YYYY-MM-DD): ");
         double budget = readValidDouble("Enter search budget: ");
 
-        Client client = new Client(id, name, files, date, budget);
+        ClientBuilder builder = new ConcreteClientBuilder();
+        Client client = builder
+                .buildId(id)
+                .buildName(name)
+                .buildFiles(files)
+                .buildContractDate(date)
+                .buildSearchBudget(budget)
+                .getResult();
         manager.addClient(client);
         saveChanges();
         System.out.println("Client added successfully.");
@@ -234,7 +241,14 @@ public class MainMenu {
         LocalDate date = readValidDate("Enter new contract date (YYYY-MM-DD): ");
         double budget = readValidDouble("Enter new budget: ");
 
-        Client updatedClient = new Client(id, name, files, date, budget);
+        ClientBuilder builder = new ConcreteClientBuilder();
+        Client updatedClient = builder
+                .buildId(id)
+                .buildName(name)
+                .buildFiles(files)
+                .buildContractDate(date)
+                .buildSearchBudget(budget)
+                .getResult();
         manager.updateClient(updatedClient);
         saveChanges();
         System.out.println("Information updated.");
