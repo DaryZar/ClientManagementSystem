@@ -49,6 +49,11 @@ public class ArchiveHandler
             {
                 String fileName = ze.getName();
                 File newFile = new File(destDirectory + File.separator + fileName);
+
+                if (newFile.getParentFile() != null)
+                {
+                    newFile.getParentFile().mkdirs();
+                }
                 
                 try (FileOutputStream fos = new FileOutputStream(newFile)) 
                 {

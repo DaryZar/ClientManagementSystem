@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-public class Client 
+public class Client extends AbstractClient
 {
     @JacksonXmlProperty(isAttribute = true)
     private int id;
@@ -27,19 +27,29 @@ public class Client
         this.searchBudget = searchBudget;
     }
 
+    @Override
     public int getId() { return id; }
+    @Override
     public void setId(int id) { this.id = id; }
 
+    @Override
     public String getName() { return name; }
+    @Override
     public void setName(String name) { this.name = name; }
 
+    @Override
     public List<ClientFile> getFiles() { return files; }
+    @Override
     public void setFiles(List<ClientFile> files) { this.files = files; }
 
+    @Override
     public LocalDate getContractDate() { return contractDate; }
+    @Override
     public void setContractDate(LocalDate contractDate) { this.contractDate = contractDate; }
 
+    @Override
     public double getSearchBudget() { return searchBudget; }
+    @Override
     public void setSearchBudget(double searchBudget) { this.searchBudget = searchBudget; }
 
     @Override

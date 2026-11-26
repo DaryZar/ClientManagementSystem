@@ -148,3 +148,35 @@ Thu Oct 08 13:55:53 MSK 2026 : Invalid field count in line: 6;InvalidFields;repo
 2026-11-12 13:31:55 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
 2026-11-12 13:31:55 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
 2026-11-12 13:31:55 : XML validation failed: cvc-complex-type.2.4.a: Invalid content was found starting with element 'wrongTag'. One of '{client}' is expected.
+2026-11-19 11:28:41 : Invalid field count in line: broken_line_here
+2026-11-19 11:28:41 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-19 11:28:41 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-19 11:28:41 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-19 11:28:41 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-19 11:28:41 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-19 11:28:41 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-19 11:28:41 : XML validation failed: cvc-complex-type.2.4.a: Invalid content was found starting with element 'wrongTag'. One of '{client}' is expected.
+2026-11-19 11:55:15 : Invalid field count in line: broken_line_here
+2026-11-19 11:55:16 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-19 11:55:16 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-19 11:55:16 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-19 11:55:16 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-19 11:55:16 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-19 11:55:16 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-19 11:55:16 : XML validation failed: cvc-complex-type.2.4.a: Invalid content was found starting with element 'wrongTag'. One of '{client}' is expected.
+2026-11-26 11:36:10 : Invalid field count in line: broken_line_here
+2026-11-26 11:36:10 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-26 11:36:10 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-26 11:36:10 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-26 11:36:10 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-26 11:36:10 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-26 11:36:10 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-26 11:36:10 : XML validation failed: cvc-complex-type.2.4.a: Invalid content was found starting with element 'wrongTag'. One of '{client}' is expected.
+2026-11-26 11:36:33 : Invalid field count in line: broken_line_here
+2026-11-26 11:36:34 : Invalid field count in line: 1;OnlyTwoFields
+2026-11-26 11:36:34 : Type parsing error (For input string: "not_int") in line: not_int;Name;-;2025-01-01;100
+2026-11-26 11:36:34 : Logical value error in line: -5;NegativeId;-;2025-01-01;100
+2026-11-26 11:36:34 : Logical value error in line: 1;;-;2025-01-01;100
+2026-11-26 11:36:34 : Type parsing error (Text '2025-99-99' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 99) in line: 1;Name;-;2025-99-99;100
+2026-11-26 11:36:34 : Invalid file token format 'bad_file_no_colon' in line: 1;Name;bad_file_no_colon;2025-01-01;100
+2026-11-26 11:36:34 : XML validation failed: cvc-complex-type.2.4.a: Invalid content was found starting with element 'wrongTag'. One of '{client}' is expected.

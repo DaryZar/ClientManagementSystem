@@ -124,6 +124,10 @@ public class XmlAdvancedHandler {
         File file = new File(filename);
         if (!file.exists()) return;
 
+        if (new File(XSD_SCHEMA).exists() && !Validator.validateXml(filename, XSD_SCHEMA)) {
+            throw new RuntimeException("XML structure is invalid against XSD schema.");
+        }
+
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
 
@@ -263,6 +267,10 @@ public class XmlAdvancedHandler {
         manager.clearAll();
         File file = new File(filename);
         if (!file.exists()) return;
+
+        if (new File(XSD_SCHEMA).exists() && !Validator.validateXml(filename, XSD_SCHEMA)) {
+            throw new RuntimeException("XML structure is invalid against XSD schema.");
+        }
 
         XMLInputFactory factory = XMLInputFactory.newInstance();
         try (FileInputStream fis = new FileInputStream(file)) {

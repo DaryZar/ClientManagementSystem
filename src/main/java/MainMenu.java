@@ -10,15 +10,20 @@ public class MainMenu {
     private final ClientCollectionManager manager;
     private final Scanner scanner = new Scanner(System.in);
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private final String DATA_FILE = "data.txt";
+    private final String dataFilename;
 
     public MainMenu(ClientCollectionManager manager) {
+        this(manager, DatabaseConnection.getInstance("data.txt").getDataFilename());
+    }
+
+    public MainMenu(ClientCollectionManager manager, String dataFilename) {
         this.manager = manager;
+        this.dataFilename = dataFilename;
     }
 
         public void run() {
         try {
-            FileHandler.loadFromFile(DATA_FILE, manager);
+            FileHandler.loadFromFile(dataFilename, manager);
         } catch (IOException e) {
             System.out.println("Error loading initial file: " + e.getMessage());
         }
@@ -52,6 +57,8 @@ public class MainMenu {
             System.out.println("25. Archiving: Unpack data.xml from ZIP");
             System.out.println("26. Archiving: Pack data.xml to JAR");
             System.out.println("27. Archiving: Unpack data.xml from JAR");
+            System.out.println("28. Sort by contract date (Collections/Comparator)");
+            System.out.println("29. Sort by ID (Collections/Comparator)");
             System.out.println("0. Exit");
             System.out.print("Select action: ");
 
@@ -84,7 +91,7 @@ public class MainMenu {
                     }
                     case 7 -> DataOperations.printSortedByMap(manager.getClientMap());
                     case 8 -> {
-                        FileHandler.saveToFile(DATA_FILE, manager);
+                        FileHandler.saveToFile(dataFilename, manager);
                         System.out.println("Data saved to TXT successfully.");
                     }
                     case 9 -> {
@@ -165,6 +172,18 @@ public class MainMenu {
                         ArchiveHandler.unpackFromJar("data.jar", "./unpacked_jar");
                         System.out.println("JAR files successfully extracted into './unpacked_jar' folder.");
                     }
+                    case 28 -> {
+                        List<Client> sortedList = new ArrayList<>(manager.getClientList());
+                        DataOperations.sortByDateWithComparator(sortedList);
+                        System.out.println("List sorted by contract date:");
+                        DataOperations.printWithIterator(sortedList);
+                    }
+                    case 29 -> {
+                        List<Client> sortedList = new ArrayList<>(manager.getClientList());
+                        DataOperations.sortByIdWithComparator(sortedList);
+                        System.out.println("List sorted by ID:");
+                        DataOperations.printWithIterator(sortedList);
+                    }
 
                     case 0 -> {
                         System.out.println("Exiting program.");
@@ -184,6 +203,7 @@ public class MainMenu {
         System.out.print("Enter Company Name: ");
         String name = scanner.nextLine().trim();
         while (name.isEmpty()) {
+            Validator.logError("Invalid company name input: ''");
             System.out.print("Name cannot be empty! Enter Company Name: ");
             name = scanner.nextLine().trim();
         }
@@ -193,6 +213,7 @@ public class MainMenu {
 
         Client client = new Client(id, name, files, date, budget);
         manager.addClient(client);
+        saveChanges();
         System.out.println("Client added successfully.");
     }
 
@@ -205,6 +226,7 @@ public class MainMenu {
         System.out.print("Enter new Name: ");
         String name = scanner.nextLine().trim();
         while (name.isEmpty()) {
+            Validator.logError("Invalid company name input: ''");
             System.out.print("Name cannot be empty! Enter new Name: ");
             name = scanner.nextLine().trim();
         }
@@ -214,6 +236,7 @@ public class MainMenu {
 
         Client updatedClient = new Client(id, name, files, date, budget);
         manager.updateClient(updatedClient);
+        saveChanges();
         System.out.println("Information updated.");
     }
 
@@ -221,9 +244,20 @@ public class MainMenu {
         int id = readValidInt("Enter ID to delete: ");
         if (manager.getClientMap().containsKey(id)) {
             manager.deleteClient(id);
+            saveChanges();
             System.out.println("Client deleted successfully.");
         } else {
             System.out.println("Client with this ID not found.");
+        }
+    }
+
+    private void saveChanges() {
+        try {
+            FileHandler.saveToFile(dataFilename, manager);
+        } catch (IOException e) {
+            String message = "Failed to save data to TXT: " + e.getMessage();
+            System.out.println(message);
+            Validator.logError(message);
         }
     }
 
@@ -238,12 +272,14 @@ public class MainMenu {
             System.out.print("Enter file name: ");
             String fName = scanner.nextLine().trim();
             while (fName.isEmpty()) {
+                Validator.logError("Invalid file name input: ''");
                 System.out.print("File name cannot be empty! Enter file name: ");
                 fName = scanner.nextLine().trim();
             }
             System.out.print("Enter file type (txt, doc, pdf, xls, json): ");
                         String fType = scanner.nextLine().trim().toLowerCase();
             while (fType.isEmpty()) {
+                Validator.logError("Invalid file type input: ''");
                 System.out.print("File type cannot be empty! Enter file type: ");
                 fType = scanner.nextLine().trim().toLowerCase();
             }
@@ -255,10 +291,13 @@ public class MainMenu {
     private int readValidInt(String message) {
         while (true) {
             System.out.print(message);
+            String input = scanner.nextLine().trim();
             try {
-                return Integer.parseInt(scanner.nextLine().trim());
+                return Integer.parseInt(input);
             } catch (NumberFormatException e) {
+                String errorMessage = "Invalid integer input: '" + input + "'";
                 System.out.println("Invalid number format! Please enter an integer.");
+                Validator.logError(errorMessage);
             }
         }
     }
@@ -266,10 +305,13 @@ public class MainMenu {
     private double readValidDouble(String message) {
         while (true) {
             System.out.print(message);
+            String input = scanner.nextLine().trim();
             try {
-                return Double.parseDouble(scanner.nextLine().trim());
+                return Double.parseDouble(input);
             } catch (NumberFormatException e) {
+                String errorMessage = "Invalid double input: '" + input + "'";
                 System.out.println("Invalid double format! Please enter a decimal number.");
+                Validator.logError(errorMessage);
             }
         }
     }
@@ -277,10 +319,13 @@ public class MainMenu {
     private LocalDate readValidDate(String message) {
         while (true) {
             System.out.print(message);
+            String input = scanner.nextLine().trim();
             try {
-                return LocalDate.parse(scanner.nextLine().trim(), formatter);
+                return LocalDate.parse(input, formatter);
             } catch (DateTimeParseException e) {
+                String errorMessage = "Invalid date input: '" + input + "'";
                 System.out.println("Invalid date format! Use YYYY-MM-DD.");
+                Validator.logError(errorMessage);
             }
         }
     }

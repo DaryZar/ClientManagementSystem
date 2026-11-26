@@ -1,0 +1,14 @@
+target/
+out/
+build/
+.idea/
+.vscode/
+*.iml
+*.class
+*.jar
+*.zip
+*.enc
+secret.key
+errors.log
+unpacked/
+unpacked_jar/

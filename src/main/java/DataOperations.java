@@ -21,6 +21,17 @@ public class DataOperations
         list.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
     }
 
+    public static void sortByDateWithComparator(List<Client> list)
+    {
+        Collections.sort(list, Comparator.comparing(
+                Client::getContractDate, Comparator.nullsLast(Comparator.naturalOrder())));
+    }
+
+    public static void sortByIdWithComparator(List<Client> list)
+    {
+        Collections.sort(list, Comparator.comparingInt(Client::getId));
+    }
+
     public static void printSortedByMap(Map<Integer, Client> baseMap) 
     {
         TreeMap<Integer, Client> sortedMap = new TreeMap<>(baseMap);

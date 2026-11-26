@@ -4,6 +4,7 @@ import org.junit.jupiter.api.io.TempDir;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -431,6 +432,121 @@ class ProjectUnitTests
                 ArchiveHandler.packToZip(missing, tempDir.resolve("out.zip").toString()));
         assertThrows(FileNotFoundException.class, () ->
                 ArchiveHandler.packToJar(missing, tempDir.resolve("out.jar").toString()));
+    }
+
+    @Test
+    void testClient_IsAbstractClientHeirAndKeepsFields() {
+        Client client = new Client(11, "Abstract Heir",
+                List.of(new ClientFile("report", "pdf")),
+                LocalDate.of(2026, 1, 20), 1234.56);
+
+        assertTrue(client instanceof AbstractClient);
+        AbstractClient abstraction = client;
+        assertEquals(11, abstraction.getId());
+        assertEquals("Abstract Heir", abstraction.getName());
+        assertEquals(1234.56, abstraction.getSearchBudget());
+
+        abstraction.setName("Renamed Heir");
+        assertEquals("Renamed Heir", client.getName());
+    }
+
+    @Test
+    void testBuilder_BuildsFluentClientAndResetWorks() {
+        ClientBuilder builder = new ConcreteClientBuilder();
+        assertSame(builder, builder.buildId(42));
+
+        List<ClientFile> files = List.of(new ClientFile("contract", "pdf"));
+        Client built = builder
+                .buildName("Builder Corp")
+                .buildFiles(files)
+                .buildContractDate(LocalDate.of(2026, 2, 3))
+                .buildSearchBudget(9876.5)
+                .getResult();
+
+        assertEquals(42, built.getId());
+        assertEquals("Builder Corp", built.getName());
+        assertEquals(1, built.getFiles().size());
+        assertEquals("contract.pdf", built.getFiles().get(0).toString());
+        assertEquals(LocalDate.of(2026, 2, 3), built.getContractDate());
+        assertEquals(9876.5, built.getSearchBudget());
+
+        builder.reset();
+        Client empty = builder.getResult();
+        assertEquals(0, empty.getId());
+        assertNull(empty.getName());
+        assertTrue(empty.getFiles().isEmpty());
+    }
+
+    @Test
+    void testDatabaseConnection_IsSingletonAndCreatesDataFile() {
+        DatabaseConnection.resetForTests();
+        Path dbFile = tempDir.resolve("singleton_data.txt");
+
+        DatabaseConnection first = DatabaseConnection.getInstance(dbFile.toString());
+        DatabaseConnection second = DatabaseConnection.getInstance("ignored.txt");
+
+        assertSame(first, second);
+        assertEquals(dbFile.toString(), second.getDataFilename());
+        assertTrue(Files.exists(dbFile));
+
+        DatabaseConnection.resetForTests();
+    }
+
+    @Test
+    void testMenu_CreateClientUpdatesTxtFileImmediately() throws IOException {
+        manager.clearAll();
+        String dataFile = tempDir.resolve("menu_data.txt").toString();
+        String input = "2\n7\nMenu Co\nn\n2026-07-01\n777.50\n0\n";
+
+        InputStream originalIn = System.in;
+        PrintStream originalOut = System.out;
+        try {
+            System.setIn(new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8)));
+            System.setOut(new PrintStream(new ByteArrayOutputStream()));
+            MainMenu menu = new MainMenu(manager, dataFile);
+            menu.run();
+        } finally {
+            System.setIn(originalIn);
+            System.setOut(originalOut);
+        }
+
+        assertEquals(1, manager.getClientList().size());
+        String saved = Files.readString(Path.of(dataFile));
+        assertTrue(saved.contains("Menu Co"));
+        assertTrue(saved.contains("777.50"));
+    }
+
+    @Test
+    void testDataOperations_SortByDateAndIdWithComparator() {
+        manager.addClient(new Client(3, "Future", List.of(), LocalDate.of(2026, 12, 1), 300.0));
+        manager.addClient(new Client(4, "No Date", List.of(), null, 400.0));
+
+        List<Client> list = manager.getClientList();
+        DataOperations.sortByDateWithComparator(list);
+        assertEquals(1, list.get(0).getId());
+        assertEquals(2, list.get(1).getId());
+        assertEquals(3, list.get(2).getId());
+        assertEquals(4, list.get(3).getId());
+
+        DataOperations.sortByIdWithComparator(list);
+        assertEquals(1, list.get(0).getId());
+        assertEquals(2, list.get(1).getId());
+        assertEquals(3, list.get(2).getId());
+        assertEquals(4, list.get(3).getId());
+    }
+
+    @Test
+    void testRealXsdSchemaIsUsableForValidation() throws Exception {
+        File xsd = new File("schema.xsd");
+        Assumptions.assumeTrue(xsd.exists());
+
+        javax.xml.validation.SchemaFactory
+                .newInstance(javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI)
+                .newSchema(xsd);
+
+        String xmlPath = tempDir.resolve("schema_check.xml").toString();
+        XmlAdvancedHandler.saveWithDom(xmlPath, manager);
+        assertTrue(Validator.validateXml(xmlPath, "schema.xsd"));
     }
 }
 

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @JacksonXmlRootElement(localName = "clients")
@@ -55,7 +56,7 @@ public class FileHandler
                                 .map(f -> f.getFileName() + ":" + f.getFileType())
                                 .collect(Collectors.joining("|"));
 
-                writer.write(String.format("%d;%s;%s;%s;%.2f",
+                writer.write(String.format(Locale.ROOT, "%d;%s;%s;%s;%.2f",
                         c.getId(), c.getName(), filesSerialized, c.getContractDate().toString(), c.getSearchBudget()));
                 writer.newLine();
             }
